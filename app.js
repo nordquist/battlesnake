@@ -1,23 +1,24 @@
 const express = require("express");
 const app = express();
-const host = '0.0.0.0';
-const port = process.env.PORT || 3002;
+const port = 3002;
+
+  app.listen(port, () => {
+    console.log(`Running Battlesnake at http://localhost:${port}...`)
+  });
 
   app.get("/", (req, res) => {
-    res.send(handlers.info());
+    res.send("ok");
   });
 
   app.post("/start", (req, res) => {
-    handlers.start(req.body);
     res.send("ok");
   });
 
   app.post("/move", (req, res) => {
-    res.send(handlers.move(req.body));
+    res.send("ok");
   });
 
   app.post("/end", (req, res) => {
-    handlers.end(req.body);
     res.send("ok");
   });
 
@@ -25,7 +26,3 @@ const port = process.env.PORT || 3002;
     res.set("Server", "battlesnake/github/starter-snake-javascript");
     next();
   })
-
-  app.listen(port, host, () => {
-    console.log(`Running Battlesnake at http://${host}:${port}...`)
-  });
